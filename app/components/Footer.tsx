@@ -17,7 +17,7 @@ const Footer = () => {
     <div className="fixed bottom-0 w-full bg-orange-300 h-20 flex justify-around items-center px-6">
       <button
         className={`flex flex-col items-center ${
-          currentPath === "/profile" ? "bg-white" : "bg-transparent"
+          currentPath === "/profile" ? "bg-beige" : "bg-transparent"
         } px-4 py-2 rounded`}
         style={{
           color: "var(--background)",
