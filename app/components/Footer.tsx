@@ -2,8 +2,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import userIcon from "@/public/user.png";
 import { useEffect, useState } from "react";
+
+import userIcon from "@/public/user.png";
+import cartIcon from "@/public/shopping-bag.png";
+import homeIcon from "@/public/home-button.png";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -15,19 +18,21 @@ const Footer = () => {
 
   return (
     <div className="fixed bottom-0 w-full bg-orange-300 h-20 flex justify-around items-center px-6">
-      <button
+      <Link
+        href="/profile"
         className={`flex flex-col items-center ${
-          currentPath === "/profile" ? "bg-beige" : "bg-black"
+          currentPath === "/profile" ? "bg-white" : "bg-transparent"
         } px-4 py-2 rounded`}
         style={{
           color: "var(--background)",
         }}
       >
         <Image src={userIcon} alt="User" className="w-6" />
-        <Link href="/profile">Profile</Link>
-      </button>
+        Profile
+      </Link>
 
-      <button
+      <Link
+        href="/"
         className={`flex flex-col items-center ${
           currentPath === "/" ? "bg-white" : "bg-transparent"
         } px-4 py-2 rounded`}
@@ -35,11 +40,12 @@ const Footer = () => {
           color: "var(--background)",
         }}
       >
-        <Image src={userIcon} alt="User" className="w-6" />
-        <Link href="/">Main</Link>
-      </button>
+        <Image src={homeIcon} alt="Menu" className="w-6" />
+        Menu
+      </Link>
 
-      <button
+      <Link
+        href="/cart"
         className={`flex flex-col items-center ${
           currentPath === "/cart" ? "bg-white" : "bg-transparent"
         } px-4 py-2 rounded`}
@@ -47,9 +53,9 @@ const Footer = () => {
           color: "var(--background)",
         }}
       >
-        <Image src={userIcon} alt="User" className="w-6" />
-        <Link href="/cart">Cart</Link>
-      </button>
+        <Image src={cartIcon} alt="Cart" className="w-6" />
+        Cart
+      </Link>
     </div>
   );
 };
