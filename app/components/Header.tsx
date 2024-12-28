@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import notificationIcon from "@/public/notification.png";
-import aishaIcon from "@/public/aishaIcon.png";
+import notificationIcon from "@/public/Header/notification.png";
+import aishaIcon from "@/public/Header/aishaIcon.png";
 
 const Header = () => {
   return (
     <div
       style={{ height: "4.5rem" }}
-      className="bg-orange-300 pt-6 flex justify-between px-4"
+      className="bg-appOrange pt-6 flex justify-between px-4 drop-shadow-lg"
     >
       <div className="bg-transparent w-8 h-8"></div>
       <div>
@@ -15,7 +15,7 @@ const Header = () => {
           src={aishaIcon}
           alt="Aisha"
           className="rounded-full"
-          width={90}
+          width={79}
         />
       </div>
 
