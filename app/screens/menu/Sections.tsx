@@ -1,34 +1,52 @@
 import { menuSection } from "@/app/components/DummyData";
+import Image from "next/image";
 
 const Sections = ({
   renderedMenu,
   linksRef,
   horizontalBarHeight,
   activeSection,
+  setActiveSection,
   setClickedButton,
+  removeScroll,
+  addScroll,
+  clickedButton,
 }: {
   renderedMenu: menuSection[];
   linksRef: React.RefObject<Record<string, HTMLButtonElement | null>>;
   horizontalBarHeight: number;
   activeSection: string;
+  setActiveSection: React.Dispatch<React.SetStateAction<string>>;
   setClickedButton: React.Dispatch<React.SetStateAction<string>>;
+  removeScroll: () => void;
+  addScroll: () => void;
+  clickedButton: string;
 }) => {
   const handleClick = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      const offsetTop = section.offsetTop - horizontalBarHeight - 15;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-      setClickedButton(id);
-      setTimeout(() => setClickedButton(""), 1000);
+    if (!clickedButton) {
+      removeScroll();
+      const section = document.getElementById(id);
+      if (section) {
+        const offsetTop = section.offsetTop - horizontalBarHeight - 15;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+
+        setActiveSection(id);
+        setClickedButton(id);
+
+        setTimeout(() => {
+          setClickedButton("");
+          addScroll();
+        }, 700);
+      }
     }
   };
 
   return (
     <div
-      className="w-full overflow-x-auto scrollbar-hide py-4 sticky top-0 z-10 pl-3"
+      className="w-full overflow-x-auto scrollbar-hide py-1 sticky top-0 z-10 pl-3"
       style={{ backgroundColor: "var(--background)" }}
     >
       <div className="flex gap-4 min-w-max mr-6">
@@ -39,13 +57,18 @@ const Sections = ({
               linksRef.current[item.section.id] = el;
             }}
             onClick={() => handleClick(item.section.id)}
-            className={`px-4 py-2 rounded-md ${
-              activeSection === item.section.id
-                ? "bg-orange-300"
-                : "bg-gray-200"
-            } text-black`}
+            className={`p-2 rounded-lg ${
+              activeSection === item.section.id && "bg-appGrayBg shadow-md"
+            } text-black flex flex-col items-center`}
           >
-            {item.section.name}
+            <div className="w-[70px] h-[70px] flex items-center justify-center overflow-hidden rounded-full mb-2">
+              <Image
+                src={item.section.imageName}
+                alt={item.section.name}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <span className="text-base">{item.section.name}</span>
           </button>
         ))}
       </div>

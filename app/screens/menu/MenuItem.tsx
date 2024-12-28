@@ -41,41 +41,44 @@ const MenuItem = ({
   };
 
   return (
-    <div className="flex bg-gray-200 rounded-md mb-4 text-black items-center mr-3">
-      <div className="w-36 h-24 ml-1 relative flex items-center justify-center">
+    <div className="flex bg-appGrayBg rounded-[10px] mb-4 mr-3 h-24">
+      <div className="w-24 h-full relative overflow-hidden shrink-0 rounded-l-[10px]">
         <Image
           src={item.ImageName}
           alt="Picture"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
+          className="object-cover w-full h-full"
         />
         {quantity > 0 && (
-          <div className="absolute inset-0 flex items-center justify-center text-2xl text-white font-bold bg-black bg-opacity-50 rounded-lg">
+          <div className="absolute inset-0 flex items-center justify-center text-2xl text-white font-bold bg-black bg-opacity-50">
             {quantity}
           </div>
         )}
       </div>
 
-      <div className="my-2 ml-2 border-r-2 border-current">
-        <p className="text-lg font-bold">{item.name}</p>
-        <p className="text-sm text-slate-600">{item.description}</p>
-        <div className="flex justify-end px-4">
+      <div className="ml-2 shrink-1 flex flex-col justify-between">
+        <div>
+          <p className="text-lg font-bold">{item.name}</p>
+          <p className="text-xs">{item.description}</p>
+        </div>
+        <div>
           <p className="text-sm font-bold">{item.price}</p>
         </div>
       </div>
 
-      <div className="text-3xl flex flex-col justify-around">
+      <div
+        style={{ fontFamily: "Arial, sans-serif" }}
+        className="shrink-0 text-3xl flex flex-col justify-center items-center w-16 h-full"
+      >
         <button
           onClick={() => increaseQuantity(item.id)}
-          className="grow pl-3 p-2"
+          className="w-full grow border-l-2"
         >
           +
         </button>
-        <hr className="border-1 border-current" />
+        <hr className="w-full border-3 border-black" />
         <button
           onClick={() => decreaseQuantity(item.id)}
-          className="grow pl-3 p-2"
+          className="w-full grow border-l-2"
         >
           -
         </button>

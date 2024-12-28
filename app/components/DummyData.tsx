@@ -1,9 +1,14 @@
-import CakeImg from "@/public/cake.png";
-import SomsaImg from "@/public/somsa.png";
-import SaladImg from "@/public/salad.png";
-import DoughImg from "@/public/dough.png";
-import CoffeImg from "@/public/coffee.png";
+import CakeImg from "@/public/MenuItems/cake.png";
+import SomsaImg from "@/public/MenuItems/somsa.png";
+import SaladImg from "@/public/MenuItems/salad.png";
+import DoughImg from "@/public/MenuItems/dough.png";
+import CoffeImg from "@/public/MenuItems/coffee.png";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import SomsaSectionImg from "@/public/Sections/SomsaSectionImg.png";
+import CakeSectionImg from "@/public/Sections/CakeSectionImg.png";
+import SaladsSectionImg from "@/public/Sections/SaladsSectionImg.png";
+import YarimTayyorSection from "@/public/Sections/YarimTayyorSection.png";
+import CoffeeSectionImg from "@/public/Sections/coffee.png";
 
 const description: string =
   "Lorem ipsum dolor sit amet, consectetur elit adipiscing, sed.";
@@ -11,6 +16,7 @@ const description: string =
 type sectionItem = {
   id: string;
   name: string;
+  imageName: StaticImport;
 };
 
 export interface menuItem {
@@ -31,6 +37,7 @@ const menu: menuSection[] = [
     section: {
       id: "1",
       name: "Somsa",
+      imageName: SomsaSectionImg,
     },
     sectionItems: [
       {
@@ -67,6 +74,7 @@ const menu: menuSection[] = [
     section: {
       id: "2",
       name: "Cakes",
+      imageName: CakeSectionImg,
     },
     sectionItems: [
       {
@@ -103,6 +111,7 @@ const menu: menuSection[] = [
     section: {
       id: "3",
       name: "Salads",
+      imageName: SaladsSectionImg,
     },
     sectionItems: [
       {
@@ -139,6 +148,7 @@ const menu: menuSection[] = [
     section: {
       id: "4",
       name: "Yarim-tayyor",
+      imageName: YarimTayyorSection,
     },
     sectionItems: [
       {
@@ -210,6 +220,7 @@ const menu: menuSection[] = [
     section: {
       id: "5",
       name: "Ichimliklar",
+      imageName: CoffeeSectionImg,
     },
     sectionItems: [
       {

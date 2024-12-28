@@ -11,7 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        appOrange: "#F9E5D1",
+        appGrayBg: "#F3F3F3",
       },
+    },
+    fontFamily: {
+      dekko: ["Dekko", "cursive"],
     },
   },
   plugins: [],

@@ -4,9 +4,9 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import userIcon from "@/public/user.png";
-import cartIcon from "@/public/shopping-bag.png";
-import homeIcon from "@/public/home-button.png";
+import userIcon from "@/public/Navigation/user.png";
+import cartIcon from "@/public/Navigation/shopping-bag.png";
+import homeIcon from "@/public/Navigation/home-button.png";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -17,7 +17,7 @@ const Footer = () => {
   }, [pathname]);
 
   return (
-    <div className="fixed bottom-0 w-full bg-orange-300 h-20 flex justify-around items-center px-6">
+    <div className="fixed bottom-0 w-full bg-appOrange drop-shadow-lg h-20 flex justify-around items-center px-6">
       <Link
         href="/profile"
         className={`text-black flex flex-col items-center ${
