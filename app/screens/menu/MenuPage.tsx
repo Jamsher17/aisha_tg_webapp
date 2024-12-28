@@ -16,6 +16,7 @@ const MenuPage = () => {
   const linksRef = useRef<Record<string, HTMLButtonElement | null>>({});
   const horizontalBarHeight = 68;
   const [userCart, setUserCart] = useState<cartItem[]>([]);
+  const [clickedButton, setClickedButton] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +26,7 @@ const MenuPage = () => {
 
       const distances = sections.map((section) => {
         if (!section) return -Infinity;
-        if (section.getBoundingClientRect().top - horizontalBarHeight < 40) {
+        if (section.getBoundingClientRect().top - horizontalBarHeight < 30) {
           return section.getBoundingClientRect().top - horizontalBarHeight;
         }
         return -Infinity;
@@ -33,6 +34,12 @@ const MenuPage = () => {
 
       const closestIndex = distances.indexOf(Math.max(...distances));
       if (closestIndex !== -1) setActiveSection(menu[closestIndex].section.id);
+
+      // const { scrollHeight, scrollTop, clientHeight } =
+      //   document.documentElement;
+      // if (scrollTop + clientHeight >= scrollHeight) {
+      //   console.log("Scrolled to the end");
+      // }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -60,7 +67,7 @@ const MenuPage = () => {
     userCart.find((item) => item.itemId == id)?.quantity || 0;
 
   return (
-    <div className="pl-6 mb-24 mt-12">
+    <div className="pl-3 mb-24 mt-12">
       {/* Input */}
       <SearchInput menu={menu} setRenderedMenu={setRenderedMenu} />
 
@@ -70,13 +77,20 @@ const MenuPage = () => {
         linksRef={linksRef}
         horizontalBarHeight={horizontalBarHeight}
         activeSection={activeSection}
+        setClickedButton={setClickedButton}
       />
 
       {/* Menu */}
-      <div className="mr-6">
+      <div className="mr-3">
         {renderedMenu.map((item) => (
-          <div key={item.section.id} className="mb-3" id={item.section.id}>
-            <div className="font-black text-xl my-2">{item.section.name}</div>
+          <div
+            key={item.section.id}
+            className={`${
+              clickedButton == item.section.id ? "bg-gray-400" : "bg-red"
+            } transition-colors duration-1000 ease-in-out rounded-lg pb-1.5 pl-3`}
+            id={item.section.id}
+          >
+            <div className="font-black text-xl pt-1.5">{item.section.name}</div>
 
             {/* Items Mapping */}
             {item.sectionItems.map((item) => {

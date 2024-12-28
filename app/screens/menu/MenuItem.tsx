@@ -1,5 +1,3 @@
-"use client";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { cartItem } from "./MenuPage";
 import { menuItem } from "@/app/components/DummyData";
@@ -43,7 +41,7 @@ const MenuItem = ({
   };
 
   return (
-    <div className="flex bg-gray-200 rounded-md mb-4 text-black items-center">
+    <div className="flex bg-gray-200 rounded-md mb-4 text-black items-center mr-3">
       <div className="w-36 h-24 ml-1 relative flex items-center justify-center">
         <Image
           src={item.ImageName}

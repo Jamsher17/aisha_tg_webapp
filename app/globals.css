@@ -27,3 +27,7 @@ html {
 .bg {
   background-color: orange;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

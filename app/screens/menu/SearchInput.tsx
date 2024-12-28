@@ -33,7 +33,7 @@ const SearchInput = ({
   };
 
   return (
-    <div className="pr-6 shadow-sm">
+    <div className="pl-3 pr-6 shadow-sm">
       <input
         type="text"
         value={query}
