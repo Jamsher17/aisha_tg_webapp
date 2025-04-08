@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className="px-6">
+      <main>
         <MenuPage />
       </main>
     </div>
